@@ -1,4 +1,4 @@
-import Hero from "@/components/Hero";
+import Header from "@/components/Header";
 import BannerSlider from "@/components/BannerSlider";
 import Categories from "@/components/Categories";
 import ActionCards from "@/components/ActionCards";
@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <Hero />
+      <Header />
       <BannerSlider />
       <Categories />
       <ActionCards />
