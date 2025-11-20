@@ -7,6 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const testimonials = [
   {
@@ -74,6 +75,11 @@ const Testimonials = () => {
             align: "start",
             loop: true,
           }}
+          plugins={[
+            Autoplay({
+              delay: 3000,
+            }),
+          ]}
           className="w-full max-w-6xl mx-auto"
         >
           <CarouselContent className="-ml-2 md:-ml-4">
@@ -134,25 +140,6 @@ const Testimonials = () => {
           <CarouselNext />
         </Carousel>
 
-        {/* Stats Bar */}
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-card border border-border rounded-xl p-6 text-center">
-            <div className="text-3xl font-bold text-primary mb-2">95%</div>
-            <div className="text-sm text-muted-foreground">Selection Rate</div>
-          </div>
-          <div className="bg-card border border-border rounded-xl p-6 text-center">
-            <div className="text-3xl font-bold text-primary mb-2">500+</div>
-            <div className="text-sm text-muted-foreground">Top Rankers</div>
-          </div>
-          <div className="bg-card border border-border rounded-xl p-6 text-center">
-            <div className="text-3xl font-bold text-primary mb-2">99+%ile</div>
-            <div className="text-sm text-muted-foreground">Average Score</div>
-          </div>
-          <div className="bg-card border border-border rounded-xl p-6 text-center">
-            <div className="text-3xl font-bold text-primary mb-2">50K+</div>
-            <div className="text-sm text-muted-foreground">Happy Students</div>
-          </div>
-        </div>
         
       </div>
     </section>
