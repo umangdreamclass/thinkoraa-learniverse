@@ -3,6 +3,7 @@ import BannerSlider from "@/components/BannerSlider";
 import Categories from "@/components/Categories";
 import ActionCards from "@/components/ActionCards";
 import Testimonials from "@/components/Testimonials";
+import Faculty from "@/components/Faculty";
 import Partnership from "@/components/Partnership";
 import Footer from "@/components/Footer";
 
@@ -14,6 +15,7 @@ const Index = () => {
       <Categories />
       <ActionCards />
       <Testimonials />
+      <Faculty />
       <Partnership />
       <Footer />
     </div>
