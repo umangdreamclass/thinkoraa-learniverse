@@ -1,5 +1,6 @@
-import { GraduationCap, Award, BookOpen } from "lucide-react";
+import { GraduationCap, Award, BookOpen, Phone } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselContent,
@@ -62,21 +63,24 @@ const faculty = [
 
 const Faculty = () => {
   return (
-    <section className="py-16 bg-background">
-      <div className="container">
+    <section className="py-20 bg-background relative overflow-hidden">
+      {/* Decorative Background Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
+      
+      <div className="container relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <div className="inline-block mb-4">
-            <div className="flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full">
+        <div className="text-center mb-16">
+          <div className="inline-block mb-6">
+            <div className="flex items-center gap-2 bg-gradient-to-r from-primary to-primary-hover text-primary-foreground px-6 py-3 rounded-full shadow-lg">
               <GraduationCap className="w-5 h-5" />
-              <span className="font-semibold">Our Faculty</span>
+              <span className="font-bold text-sm tracking-wide">OUR FACULTY</span>
             </div>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent">
             Learn from the Best Minds
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Expert faculty members with proven track records in guiding students to top institutes
           </p>
         </div>
@@ -92,46 +96,66 @@ const Faculty = () => {
               delay: 3500,
             }),
           ]}
-          className="w-full max-w-6xl mx-auto"
+          className="w-full max-w-7xl mx-auto"
         >
-          <CarouselContent className="-ml-2 md:-ml-4">
+          <CarouselContent className="-ml-4 md:-ml-6">
             {faculty.map((member, index) => (
-              <CarouselItem key={member.name} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+              <CarouselItem key={member.name} className="pl-4 md:pl-6 md:basis-1/2 lg:basis-1/3">
                 <Card
-                  className="bg-card border-border hover:border-primary hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in overflow-hidden"
+                  className="group relative bg-card border-2 border-border hover:border-primary transition-all duration-500 hover:shadow-2xl overflow-hidden h-full"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <div className="p-6">
-                    {/* Faculty Photo */}
-                    <div className="relative mb-4">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-32 h-32 rounded-full mx-auto border-4 border-primary/20 object-cover"
-                      />
-                      <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                        <Award className="w-3 h-3" />
+                  {/* Gradient Background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-accent/0 to-primary/0 group-hover:from-primary/5 group-hover:via-accent/5 group-hover:to-primary/5 transition-all duration-500"></div>
+                  
+                  <div className="relative p-8">
+                    {/* Faculty Photo with Decorative Ring */}
+                    <div className="relative mb-6">
+                      <div className="relative w-36 h-36 mx-auto">
+                        {/* Animated Ring */}
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-accent-foreground to-primary animate-spin" style={{ animationDuration: '3s' }}></div>
+                        <div className="absolute inset-1 rounded-full bg-card"></div>
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="absolute inset-2 w-32 h-32 rounded-full object-cover shadow-xl"
+                        />
+                      </div>
+                      <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-primary-hover text-primary-foreground px-4 py-1.5 rounded-full text-sm font-bold flex items-center gap-1.5 shadow-lg">
+                        <Award className="w-4 h-4" />
                         {member.experience}
                       </div>
                     </div>
 
                     {/* Faculty Info */}
-                    <div className="text-center mb-4">
-                      <h3 className="font-bold text-lg text-card-foreground mb-1">{member.name}</h3>
-                      <p className="text-sm text-primary font-semibold mb-2">{member.designation}</p>
-                      <p className="text-xs text-muted-foreground mb-2">{member.qualification}</p>
-                      <div className="flex items-center justify-center gap-1 text-xs text-muted-foreground">
-                        <BookOpen className="w-3 h-3" />
-                        <span>{member.specialty}</span>
+                    <div className="text-center mb-6 space-y-3">
+                      <h3 className="font-bold text-xl text-card-foreground">{member.name}</h3>
+                      <p className="text-sm text-primary font-bold tracking-wide">{member.designation}</p>
+                      <p className="text-xs text-muted-foreground font-medium leading-relaxed">{member.qualification}</p>
+                      <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground bg-accent/50 rounded-full px-4 py-2 mx-auto w-fit">
+                        <BookOpen className="w-4 h-4 text-primary" />
+                        <span className="font-medium">{member.specialty}</span>
                       </div>
                     </div>
+
+                    {/* Action Button */}
+                    <Button 
+                      asChild
+                      size="sm"
+                      className="w-full bg-gradient-to-r from-primary to-primary-hover text-primary-foreground hover:opacity-90 shadow-md hover:shadow-lg transition-all duration-300"
+                    >
+                      <a href="tel:+911234567890" className="flex items-center justify-center gap-2">
+                        <Phone className="w-4 h-4" />
+                        <span className="font-semibold">Book a Session</span>
+                      </a>
+                    </Button>
                   </div>
                 </Card>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className="hidden md:flex -left-12 border-2 border-primary bg-background hover:bg-primary hover:text-primary-foreground shadow-lg" />
+          <CarouselNext className="hidden md:flex -right-12 border-2 border-primary bg-background hover:bg-primary hover:text-primary-foreground shadow-lg" />
         </Carousel>
         
       </div>
