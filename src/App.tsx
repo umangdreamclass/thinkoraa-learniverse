@@ -5,6 +5,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import MBA from "./pages/MBA";
+import MCA from "./pages/MCA";
+import BBA from "./pages/BBA";
+import Law from "./pages/Law";
 import CAT from "./pages/CAT";
 import CMAT from "./pages/CMAT";
 
@@ -18,6 +22,10 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/mba" element={<MBA />} />
+          <Route path="/mca" element={<MCA />} />
+          <Route path="/bba" element={<BBA />} />
+          <Route path="/law" element={<Law />} />
           <Route path="/cat" element={<CAT />} />
           <Route path="/cmat" element={<CMAT />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

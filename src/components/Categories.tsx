@@ -2,27 +2,21 @@ import { GraduationCap, Scale, Briefcase, BookOpen, School, Book, Plane } from "
 import { useNavigate } from "react-router-dom";
 
 const categories = [
-  { name: "MBA", icon: GraduationCap, color: "from-blue-500 to-blue-600", link: "/cat" },
-  { name: "Law", icon: Scale, color: "from-purple-500 to-purple-600", link: "#" },
-  { name: "IPM", icon: Briefcase, color: "from-green-500 to-green-600", link: "#" },
-  { name: "BBA", icon: BookOpen, color: "from-orange-500 to-orange-600", link: "#" },
-  { name: "CUET", icon: School, color: "from-pink-500 to-pink-600", link: "#" },
-  { name: "Tuitions", icon: Book, color: "from-indigo-500 to-indigo-600", link: "#" },
+  { name: "MBA", icon: GraduationCap, color: "from-blue-500 to-blue-600", link: "/mba" },
+  { name: "MCA", icon: BookOpen, color: "from-green-500 to-green-600", link: "/mca" },
+  { name: "BBA", icon: Briefcase, color: "from-orange-500 to-orange-600", link: "/bba" },
+  { name: "Law", icon: Scale, color: "from-purple-500 to-purple-600", link: "/law" },
+  { name: "IPM", icon: School, color: "from-pink-500 to-pink-600", link: "#" },
+  { name: "CUET", icon: Book, color: "from-indigo-500 to-indigo-600", link: "#" },
   { name: "Study Abroad", icon: Plane, color: "from-cyan-500 to-cyan-600", link: "#" },
 ];
 
 const Categories = () => {
   const navigate = useNavigate();
 
-  const handleCategoryClick = (link: string, name: string) => {
+  const handleCategoryClick = (link: string) => {
     if (link === "#") return;
-    if (name === "MBA") {
-      navigate("/cat");
-    } else if (name === "MCA") {
-      navigate("/cmat");
-    } else {
-      navigate(link);
-    }
+    navigate(link);
   };
 
   return (
@@ -46,7 +40,7 @@ const Categories = () => {
             return (
               <div
                 key={category.name}
-                onClick={() => handleCategoryClick(category.link, category.name)}
+                onClick={() => handleCategoryClick(category.link)}
                 className="group bg-card rounded-2xl p-6 text-center border border-border hover:border-primary transition-all duration-300 hover:shadow-lg hover:-translate-y-2 cursor-pointer animate-fade-in"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
