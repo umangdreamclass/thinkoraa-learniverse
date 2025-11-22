@@ -77,8 +77,8 @@ const Header = () => {
 
           {/* Right Actions */}
           <div className="flex items-center gap-3">
-            <Button className="hidden md:flex bg-gradient-to-r from-primary to-primary-hover hover:opacity-90">
-              Enroll Now
+            <Button asChild className="hidden md:flex bg-gradient-to-r from-primary to-primary-hover hover:opacity-90">
+              <a href="/enroll">Enroll Now</a>
             </Button>
 
             {/* Mobile Menu Toggle */}
@@ -109,8 +109,8 @@ const Header = () => {
                 </a>
               ))}
               <div className="px-4 py-2">
-                <Button className="w-full bg-gradient-to-r from-primary to-primary-hover">
-                  Enroll Now
+                <Button asChild className="w-full bg-gradient-to-r from-primary to-primary-hover">
+                  <a href="/enroll">Enroll Now</a>
                 </Button>
               </div>
             </div>
