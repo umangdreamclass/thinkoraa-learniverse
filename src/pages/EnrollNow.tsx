@@ -53,52 +53,75 @@ const EnrollNow = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-background via-primary-light/20 to-background">
+      {/* Decorative Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+      </div>
+      
       <Header />
       
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-primary/5 to-transparent" />
+      <section className="relative py-16 md:py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,hsl(var(--primary)/0.1),transparent_50%)]" />
         <div className="container mx-auto px-4 relative">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+          <div className="max-w-4xl mx-auto text-center space-y-6 animate-fade-in">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
+              <GraduationCap className="h-5 w-5 text-primary" />
+              <span className="text-sm font-medium text-primary">Begin Your Success Story</span>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-primary-hover to-primary bg-clip-text text-transparent leading-tight">
               Start Your Journey Today
             </h1>
-            <p className="text-xl text-muted-foreground">
-              Fill in your details and take the first step towards your dream career
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+              Join thousands of successful students. Fill in your details and take the first step towards your dream career.
             </p>
           </div>
         </div>
       </section>
 
       {/* Form Section */}
-      <section className="py-12 pb-20">
+      <section className="py-8 pb-20 relative">
         <div className="container mx-auto px-4">
-          <Card className="max-w-3xl mx-auto shadow-2xl border-primary/10">
-            <CardHeader className="space-y-1 text-center pb-8">
-              <CardTitle className="text-3xl font-bold">Enrollment Form</CardTitle>
-              <CardDescription className="text-base">
-                Complete the form below to register for our entrance exam preparation courses
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+          <Card className="max-w-4xl mx-auto backdrop-blur-sm bg-card/80 border-primary/10 overflow-hidden animate-scale-in" style={{ boxShadow: 'var(--shadow-card)' }}>
+            {/* Card Header with Gradient Border */}
+            <div className="relative">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
+              <CardHeader className="space-y-3 text-center pt-10 pb-8 px-6">
+                <div className="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-primary-hover flex items-center justify-center mb-2 shadow-lg">
+                  <GraduationCap className="h-8 w-8 text-primary-foreground" />
+                </div>
+                <CardTitle className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+                  Enrollment Form
+                </CardTitle>
+                <CardDescription className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Complete the form below to register for our entrance exam preparation courses
+                </CardDescription>
+              </CardHeader>
+            </div>
+            <CardContent className="px-6 md:px-10 pb-10">
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Full Name */}
                     <FormField
                       control={form.control}
                       name="fullName"
                       render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-base font-semibold">Full Name *</FormLabel>
+                        <FormItem className="group">
+                          <FormLabel className="text-base font-semibold text-foreground/90">Full Name *</FormLabel>
                           <FormControl>
                             <div className="relative">
-                              <User className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
-                              <Input placeholder="Enter your full name" className="pl-10 h-12" {...field} />
+                              <User className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground transition-colors group-focus-within:text-primary" />
+                              <Input 
+                                placeholder="Enter your full name" 
+                                className="pl-12 h-14 text-base border-2 border-border bg-background/50 focus:border-primary focus:bg-background transition-all duration-200 focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.1)]" 
+                                {...field} 
+                              />
                             </div>
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="text-xs" />
                         </FormItem>
                       )}
                     />
@@ -108,15 +131,20 @@ const EnrollNow = () => {
                       control={form.control}
                       name="email"
                       render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-base font-semibold">Email *</FormLabel>
+                        <FormItem className="group">
+                          <FormLabel className="text-base font-semibold text-foreground/90">Email *</FormLabel>
                           <FormControl>
                             <div className="relative">
-                              <Mail className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
-                              <Input type="email" placeholder="your.email@example.com" className="pl-10 h-12" {...field} />
+                              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground transition-colors group-focus-within:text-primary" />
+                              <Input 
+                                type="email" 
+                                placeholder="your.email@example.com" 
+                                className="pl-12 h-14 text-base border-2 border-border bg-background/50 focus:border-primary focus:bg-background transition-all duration-200 focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.1)]" 
+                                {...field} 
+                              />
                             </div>
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="text-xs" />
                         </FormItem>
                       )}
                     />
@@ -126,15 +154,19 @@ const EnrollNow = () => {
                       control={form.control}
                       name="mobile"
                       render={({ field }) => (
-                        <FormItem className="md:col-span-2">
-                          <FormLabel className="text-base font-semibold">Mobile Number *</FormLabel>
+                        <FormItem className="md:col-span-2 group">
+                          <FormLabel className="text-base font-semibold text-foreground/90">Mobile Number *</FormLabel>
                           <FormControl>
                             <div className="relative">
-                              <Phone className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
-                              <Input placeholder="10-digit mobile number" className="pl-10 h-12" {...field} />
+                              <Phone className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground transition-colors group-focus-within:text-primary" />
+                              <Input 
+                                placeholder="10-digit mobile number" 
+                                className="pl-12 h-14 text-base border-2 border-border bg-background/50 focus:border-primary focus:bg-background transition-all duration-200 focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.1)]" 
+                                {...field} 
+                              />
                             </div>
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="text-xs" />
                         </FormItem>
                       )}
                     />
@@ -144,11 +176,11 @@ const EnrollNow = () => {
                       control={form.control}
                       name="gender"
                       render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-base font-semibold">Gender *</FormLabel>
+                        <FormItem className="group">
+                          <FormLabel className="text-base font-semibold text-foreground/90">Gender *</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger className="h-12">
+                              <SelectTrigger className="h-14 text-base border-2 border-border bg-background/50 focus:border-primary focus:bg-background transition-all duration-200 focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.1)]">
                                 <SelectValue placeholder="Select gender" />
                               </SelectTrigger>
                             </FormControl>
@@ -158,7 +190,7 @@ const EnrollNow = () => {
                               <SelectItem value="Other">Other</SelectItem>
                             </SelectContent>
                           </Select>
-                          <FormMessage />
+                          <FormMessage className="text-xs" />
                         </FormItem>
                       )}
                     />
@@ -168,11 +200,11 @@ const EnrollNow = () => {
                       control={form.control}
                       name="examCategory"
                       render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-base font-semibold">Exam Category *</FormLabel>
+                        <FormItem className="group">
+                          <FormLabel className="text-base font-semibold text-foreground/90">Exam Category *</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger className="h-12">
+                              <SelectTrigger className="h-14 text-base border-2 border-border bg-background/50 focus:border-primary focus:bg-background transition-all duration-200 focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.1)]">
                                 <SelectValue placeholder="Select exam" />
                               </SelectTrigger>
                             </FormControl>
@@ -183,7 +215,7 @@ const EnrollNow = () => {
                               <SelectItem value="LAW">LAW</SelectItem>
                             </SelectContent>
                           </Select>
-                          <FormMessage />
+                          <FormMessage className="text-xs" />
                         </FormItem>
                       )}
                     />
@@ -193,15 +225,19 @@ const EnrollNow = () => {
                       control={form.control}
                       name="tenthResult"
                       render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-base font-semibold">10th Result (%) *</FormLabel>
+                        <FormItem className="group">
+                          <FormLabel className="text-base font-semibold text-foreground/90">10th Result (%) *</FormLabel>
                           <FormControl>
                             <div className="relative">
-                              <BookOpen className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
-                              <Input placeholder="e.g. 85.5" className="pl-10 h-12" {...field} />
+                              <BookOpen className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground transition-colors group-focus-within:text-primary" />
+                              <Input 
+                                placeholder="e.g. 85.5" 
+                                className="pl-12 h-14 text-base border-2 border-border bg-background/50 focus:border-primary focus:bg-background transition-all duration-200 focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.1)]" 
+                                {...field} 
+                              />
                             </div>
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="text-xs" />
                         </FormItem>
                       )}
                     />
@@ -211,36 +247,49 @@ const EnrollNow = () => {
                       control={form.control}
                       name="twelfthResult"
                       render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-base font-semibold">12th Result (%) *</FormLabel>
+                        <FormItem className="group">
+                          <FormLabel className="text-base font-semibold text-foreground/90">12th Result (%) *</FormLabel>
                           <FormControl>
                             <div className="relative">
-                              <Trophy className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
-                              <Input placeholder="e.g. 88.0" className="pl-10 h-12" {...field} />
+                              <Trophy className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground transition-colors group-focus-within:text-primary" />
+                              <Input 
+                                placeholder="e.g. 88.0" 
+                                className="pl-12 h-14 text-base border-2 border-border bg-background/50 focus:border-primary focus:bg-background transition-all duration-200 focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.1)]" 
+                                {...field} 
+                              />
                             </div>
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="text-xs" />
                         </FormItem>
                       )}
                     />
                   </div>
 
-                  {/* Submit Button */}
-                  <div className="space-y-4 pt-4">
-                    <Button type="submit" size="lg" className="w-full h-12 text-base font-semibold">
+                  {/* Submit Button Section */}
+                  <div className="space-y-5 pt-6">
+                    <Button 
+                      type="submit" 
+                      size="lg" 
+                      className="w-full h-14 text-base font-semibold bg-gradient-to-r from-primary to-primary-hover hover:shadow-[0_8px_30px_hsl(var(--primary)/0.3)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                    >
                       <GraduationCap className="mr-2 h-5 w-5" />
                       Complete Enrollment
                     </Button>
                     
-                    <div className="text-center">
-                      <span className="text-muted-foreground">or</span>
+                    <div className="relative">
+                      <div className="absolute inset-0 flex items-center">
+                        <span className="w-full border-t border-border" />
+                      </div>
+                      <div className="relative flex justify-center text-xs uppercase">
+                        <span className="bg-card px-4 text-muted-foreground font-medium">or</span>
+                      </div>
                     </div>
                     
                     <Button
                       type="button"
                       variant="outline"
                       size="lg"
-                      className="w-full h-12 text-base font-semibold"
+                      className="w-full h-14 text-base font-semibold border-2 hover:bg-primary/5 hover:border-primary/50 transition-all duration-300"
                       onClick={() => navigate("/student-login")}
                     >
                       Already Enrolled? Login
