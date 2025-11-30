@@ -4,6 +4,7 @@ import Categories from "@/components/Categories";
 import ActionCards from "@/components/ActionCards";
 import Testimonials from "@/components/Testimonials";
 import Faculty from "@/components/Faculty";
+import Centers from "@/components/Centers";
 import Partnership from "@/components/Partnership";
 import Footer from "@/components/Footer";
 
@@ -16,6 +17,7 @@ const Index = () => {
       <ActionCards />
       <Testimonials />
       <Faculty />
+      <Centers />
       <Partnership />
       <Footer />
     </div>
