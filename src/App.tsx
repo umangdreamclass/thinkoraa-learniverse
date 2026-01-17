@@ -13,6 +13,7 @@ import CAT from "./pages/CAT";
 import CMAT from "./pages/CMAT";
 import EnrollNow from "./pages/EnrollNow";
 import AboutUs from "./pages/AboutUs";
+import StudentLogin from "./pages/StudentLogin";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/cmat" element={<CMAT />} />
           <Route path="/enroll" element={<EnrollNow />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/student-login" element={<StudentLogin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
